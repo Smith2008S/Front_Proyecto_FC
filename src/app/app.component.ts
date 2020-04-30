@@ -30,7 +30,7 @@ export class AppComponent {
     
     headers.append('Content-Type', 'application/X-www-form-urlencoded');
     
-    this.http.post('http://localhost:3000/search', searchterm, {headers: headers}).subscribe((res) => {
+    this.http.get('http://localhost:3000/api/tweets/buscalgo', searchterm,).subscribe((res) => {
       this.tweetsdata = res.json().data.statuses;
     });
   }
