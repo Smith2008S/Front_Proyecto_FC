@@ -23,6 +23,7 @@ export class AppComponent {
     })
   }
   
+  
   searchcall(){
     
     var headers = new Headers();
@@ -30,7 +31,7 @@ export class AppComponent {
     
     headers.append('Content-Type', 'application/X-www-form-urlencoded');
     
-    this.http.get('http://localhost:3000/api/tweets/buscalgo', searchterm,).subscribe((res) => {
+    this.http.get('http://localhost:3000/api/tweets/' + this.searchquery, searchterm, ).subscribe((res) => {
       this.tweetsdata = res.json().data.statuses;
     });
   }
