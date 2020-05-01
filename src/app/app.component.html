@@ -1,31 +1,27 @@
-
-<button class="waves-effect waves-light btn" (click)="makecall()">Authorize</button>
 <div class="row">
-    <form class="col s4">
-      <div class="row">
+    <div class="row">
+      <form class="formGroup" [formGroup]="tweetsform" (ngSubmit)="searchcall()">
         <div class="input-field col s12">
-          <input id="hashtags" type="text" [(ngModel)]="searchquery" [ngModelOptions]="{standalone: true}">
+          <input id="hashtags" type="text" class="form-control" name="formData" formControlName="formData" autofocus>
           <label for="hashtags">Search by hashtags</label>
         </div>
-      </div>
-      <button class="waves-effect waves-light btn" (click)="searchcall()">Search</button>
-      <div *ngFor="let item of tweetsdata" class="col s12 m7">
-    <div class="card">
-      <div class="card-image">
-            <!--<img style={width:10px,height:10px;} src={{item.user.profile_image_url}}>-->
-  </div>
-        <div class="right-content">
-    <span class="card-title">{{item.user.name}}</span>
-    <div class="card-content">
-          <p>{{item.text}}</p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
+        <button class="waves-effect waves-light btn" type="submit">Search</button>
+      </form>
     </div>
-  </div>
+    <div *ngFor="let item of tweetsdata" class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <!--<img style={width:10px,height:10px;} src={{item.user.profile_image_url}}>-->
+        </div>
+        <div class="right-content">
+          <!-- <span class="card-title">{{item.user.name}}</span> -->
+          <div class="card-content">
+            <p>{{item.finalRes}}</p>
+          </div>
+          <!-- <div class="card-action">
+            <a href="#">This is a link</a>
+          </div> -->
+        </div>
       </div>
-    </form>
+    </div>
 </div>
-
-<button class="waves-effect waves-light btn" (click)="usercall()">User Timeline</button>

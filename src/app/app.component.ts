@@ -1,51 +1,39 @@
-import { Component } from '@angular/core';
-import { Http, Headers} from '@angular/http';
+import { Component, OnInit } from '@angular/core';
+import { Http, Headers } from '@angular/http';
+import { FormControl, FormGroup, Validators, FormControlDirective, FormBuilder } from '@angular/forms';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app works!';
-  searchquery = '';
-  tweetsdata;
-  
-  constructor(private http: Http){}
-  
-  makecall() {
-    var headers = new Headers();
-    
-    headers.append('Content-Type', 'application/X-www-form-urlencoded');
-    
-    this.http.post('http://localhost:3000/authorize', {headers: headers}).subscribe((res) => {
-      console.log(res);
-    })
-  }
-  
-  
-  searchcall(){
-    
-    var headers = new Headers();
-    var searchterm = 'query=' + this.searchquery;
-    
-    headers.append('Content-Type', 'application/X-www-form-urlencoded');
-    
-    this.http.get('http://localhost:3000/api/tweets/' + this.searchquery, searchterm, ).subscribe((res) => {
-      this.tweetsdata = res.json().data.statuses;
+
+  tweetsdata = [];
+  tweetsform: FormGroup;
+  formData = new FormControl("");
+
+  constructor(private http: Http, private formBuilder: FormBuilder) { }
+  ngOnInit() {
+    this.tweetsform = this.formBuilder.group({
+      formData: this.formData,
     });
   }
   
-  usercall(){
+  async searchcall() {
+    let searchquery = this.tweetsform.value;
     var headers = new Headers();
-    var searchterm = 'screenname=Yasmin_Payne1';
-    
+    console.log(this.tweetsform.value.formData);
+
     headers.append('Content-Type', 'application/X-www-form-urlencoded');
-    
-    this.http.post('http://localhost:3000/user', searchterm, {headers: headers}).subscribe((res) => {
-      console.log(res.json().data);
-      
+
+    await this.http.get('http://localhost:3000/api/tweets/' + this.tweetsform.value.formData).subscribe((res) => {
+      this.tweetsdata.push(res);
+      console.log(this.tweetsdata)
     });
+    
   }
 
 }
