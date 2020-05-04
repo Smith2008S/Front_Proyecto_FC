@@ -21,19 +21,16 @@ export class AppComponent implements OnInit {
       formData: this.formData,
     });
   }
-  
+
   async searchcall() {
     let searchquery = this.tweetsform.value;
-    var headers = new Headers();
     console.log(this.tweetsform.value.formData);
 
-    headers.append('Content-Type', 'application/X-www-form-urlencoded');
-
-    await this.http.get('http://localhost:3000/api/tweets/' + this.tweetsform.value.formData).subscribe((res) => {
-      this.tweetsdata.push(res);
-      console.log(this.tweetsdata)
+    this.http.get('http://localhost:3000/api/tweets/' + this.tweetsform.value.formData).subscribe(res => {
+      this.tweetsdata.push(res.json());
+      console.log(this.tweetsdata);
     });
-    
+
   }
 
 }
