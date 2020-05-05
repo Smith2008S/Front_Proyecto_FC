@@ -34,6 +34,7 @@ export class AppComponent implements OnInit {
     this.http.get('http://localhost:3000/api/tweets/' + this.tweetsform.value.formData).subscribe(res => {
       this.tweetsdata.push(res.json());
       console.log(this.tweetsdata);
+      this.Process_ba();
     });
   }
   
