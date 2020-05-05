@@ -14,12 +14,17 @@ export class AppComponent implements OnInit {
   tweetsdata = [];
   tweetsform: FormGroup;
   formData = new FormControl("");
+  isCollapsed : boolean = true;
 
   constructor(private http: Http, private formBuilder: FormBuilder) { }
   ngOnInit() {
     this.tweetsform = this.formBuilder.group({
       formData: this.formData,
     });
+  }
+
+  Process_ba(){
+    this.isCollapsed = !this.isCollapsed;
   }
 
   async searchcall() {
@@ -30,7 +35,6 @@ export class AppComponent implements OnInit {
       this.tweetsdata.push(res.json());
       console.log(this.tweetsdata);
     });
-
   }
-
+  
 }

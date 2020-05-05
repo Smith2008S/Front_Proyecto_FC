@@ -2,32 +2,30 @@
   <div class="row">
     <form class="formGroup" [formGroup]="tweetsform" (ngSubmit)="searchcall()">
       <div class="input-field col s12">
-        <input id="hashtags" type="text" class="form-control" name="formData" formControlName="formData" autofocus>
+        <input id="hashtags" type="text" class="autocomplete" name="formData" formControlName="formData" autofocus>
         <label for="hashtags"> Search by hashtags</label>
       </div>
-      <button class="waves-effect waves-light btn" type="submit">Search</button>
+      <button class="btn waves-effect waves-light" type="submit" name="action" (click)="Process_ba()">Search
+        <i class="material-icons right">send</i>
+      </button>
+      <div *ngIf="!isCollapsed" class="progress">
+        <div class="indeterminate"></div>
+      </div>
     </form>
   </div>
   <div *ngFor="let item of tweetsdata" class="col s12 m7">
     <div *ngFor="let object of item">
       <div class="card">
-        <div class="card-image">
-          <!--<img style={width:10px,height:10px;} src={{item.user.profile_image_url}}>-->
+        <div class="card-content">
+          <p class="card-panel hoverable">{{object.tweet}}</p>
         </div>
-        <div class="right-content">
-          <!-- <span class="card-title">{{item.user.name}}</span> -->
-          <div class="card-content">
-            <p>{{object.tweet}}</p>
+        <div class="card-Anali">
+          <div *ngFor="let analysis of object.analysis">
+            <div class="card-action">
+              <a href="#">Tipo: {{analysis.type}}</a>
+              <a href="#"> Texto: {{analysis.text}}</a>
+            </div>
           </div>
-          <div class="card-Anali">
-            <div *ngFor="let analysis of object.analysis">
-            <p> tipo: {{analysis.type}}</p>
-            <p> texto: {{analysis.text}}</p>
-          </div>
-          </div>
-          <!-- <div class="card-action">
-            <a href="#">This is a link</a>
-          </div> -->
         </div>
       </div>
     </div>
