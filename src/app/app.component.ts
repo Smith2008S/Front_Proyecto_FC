@@ -12,19 +12,26 @@ export class AppComponent implements OnInit {
   title = 'app works!';
 
   tweetsdata = [];
+  text = [];
   tweetsform: FormGroup;
   formData = new FormControl("");
+  busq = new FormControl("");
   isCollapsed : boolean = true;
+  isCollapsed2 : boolean = true;
 
   constructor(private http: Http, private formBuilder: FormBuilder) { }
   ngOnInit() {
     this.tweetsform = this.formBuilder.group({
       formData: this.formData,
+      busq: this.busq
     });
   }
 
   Process_ba(){
     this.isCollapsed = !this.isCollapsed;
+  }
+  Process_ba2(){
+    this.isCollapsed2 = !this.isCollapsed2;
   }
 
   async searchcall() {
@@ -38,4 +45,17 @@ export class AppComponent implements OnInit {
     });
   }
   
+  async searchcalldoc() {
+    let searchquery = this.tweetsform.value.busq;
+    var data={
+      "bucket": "bolsa-valores",
+      "name": searchquery
+    }
+    console.log(data);
+    this.http.post('http://localhost:3000/list/' , data).subscribe(res => {
+      this.text.push(res);
+      console.log(res);
+      this.Process_ba2();
+    });
+  }
 }
