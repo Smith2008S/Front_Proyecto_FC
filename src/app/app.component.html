@@ -1,6 +1,5 @@
 <body style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
 
-
   <div class="card">
     <DIV align="center" class="card-body" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
       <div class="form-group">
@@ -11,66 +10,121 @@
   </div>
 
 
-  <div align="center" class="row">
-    <div class="row" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
-      <form class="formGroup" [formGroup]="tweetsform" (ngSubmit)="searchcall()">
-        <div align="center"class="input-field col s12">
-          <input id="hashtags" type="text" class="autocomplete" name="formData" formControlName="formData" autofocus
-            style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
-          <label for="hashtags"> Search by hashtags</label>
-        </div>
-        <button class="btn waves-effect waves-light" type="submit" name="action" (click)="Process_ba()"
-          style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">Search
-          <i class="material-icons right">send</i>
-        </button>
-        <div *ngIf="!isCollapsed" class="progress">
-          <div class="indeterminate"></div>
-        </div>
-      </form>
+  <nav class="nav-extended" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
+
+    <div class="nav-content" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
+      <ul class="tabs tabs-transparent" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
+        <li class="tab"><a href="#test1">Search #</a></li>
+        <li class="tab"><a href="#test2">Search Doc</a></li>
+      </ul>
     </div>
-    <div *ngFor="let item of tweetsdata" class="col s12 m7" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #3847ca 50%)">
-      <div *ngFor="let object of item">
-        <div align="center" class="card" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #3847ca 50%)">
-          <div align="center" class="card-content" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #3847ca 50%)">
-            <p align="center" class="card-panel hoverable" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #3847ca 50%)">
-              {{object.tweet}}</p>
+  </nav>
+
+
+  <div id="test1" class="col s12">
+    <div align="center" class="row">
+      <div class="row" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
+        <form class="formGroup" [formGroup]="tweetsform" (ngSubmit)="searchcall()">
+          <div align="center" class="input-field col s12">
+            <input id="hashtags" type="text" class="autocomplete" name="formData" formControlName="formData" autofocus
+              style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
+            <label for="hashtags"> Search by hashtags</label>
           </div>
-          <div align="center" class="card-Anali" style="background-image: linear-gradient(326deg, #3847ca 0%, #2E9AFE 50%)">
-            <div *ngFor="let analysis of object.analysis">
-              <div align="center" class="card-action">
-                <a href="#" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #3847ca 50%)">Tipo:
-                  {{analysis.type}}</a>
-                <a href="#" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #3847ca 50%)"> Texto:
-                  {{analysis.text}}</a>
+          <button class="btn waves-effect waves-light" type="submit" name="action" (click)="Process_ba()"
+            style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">Search
+            <i class="material-icons right">send</i>
+          </button>
+          <div *ngIf="!isCollapsed" class="progress">
+            <div class="indeterminate"></div>
+          </div>
+        </form>
+      </div>
+      <div *ngFor="let item of tweetsdata" class="col s12 m7"
+        style="background-image: linear-gradient(326deg, #2E9AFE 0%, #3847ca 50%)">
+        <div *ngFor="let object of item">
+          <div align="center" class="card" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #3847ca 50%)">
+            <div align="center" class="card-content"
+              style="background-image: linear-gradient(326deg, #2E9AFE 0%, #3847ca 50%)">
+              <p align="center" class="card-panel hoverable"
+                style="background-image: linear-gradient(326deg, #2E9AFE 0%, #3847ca 50%)">
+                {{object.tweet}}</p>
+            </div>
+            <div align="center" class="card-Anali"
+              style="background-image: linear-gradient(326deg, #3847ca 0%, #2E9AFE 50%)">
+              <div *ngFor="let analysis of object.analysis">
+                <div align="center" class="card-action">
+                  <a href="#" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #3847ca 50%)">Tipo:
+                    {{analysis.type}}</a>
+                  <a href="#" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #3847ca 50%)"> Texto:
+                    {{analysis.text}}</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <br><br><br>
   </div>
 
-  <form align="center" class="formGroup" [formGroup]="tweetsform" (ngSubmit)="searchcalldoc()" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
-    <div class="input-field col s12" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
-      <input id="consulta" type="text" class="autocomplete" name="busq" formControlName="busq" autofocus style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
-      <label for="consulta"> Search Document</label>
-    </div>
-    <button class="btn waves-effect waves-light" type="submit" name="action2" (click)="Process_ba2()"
-      style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">Search
-      <i class="material-icons right">send</i>
-    </button>
+  <div id="test2" class="col s12">
+    <form align="center" class="formGroup" [formGroup]="tweetsform" (ngSubmit)="searchcalldoc()" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
+      <div class="input-field col s12" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
 
-    <div *ngIf="!isCollapsed2" class="progress">
-      <div class="indeterminate"></div>
-    </div>
-    <div align="center" class="col-xs-12" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
-      <div *ngFor="let item1 of text" class="col s12 m7">
-        <div align="center" class="card-content" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
-          <p align="center" class="card-panel hoverable" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #0e1fb4 50%)">
-            {{item1._body}}</p>
+        
+        <input id="consulta" type="text" class="autocomplete" name="busq" formControlName="busq" autofocus  style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
+        <label for="consulta"> Search Document</label>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action2" (click)="Process_ba2()"
+        style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">Search Text
+        <i class="material-icons right">send</i>
+      </button>
+
+      <div *ngIf="!isCollapsed2" class="progress">
+        <div class="indeterminate"></div>
+      </div>
+
+
+      <div align="center" class="col-xs-12" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
+        <div *ngFor="let item1 of text" class="col s12 m7">
+          <div align="center" class="card" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #3847ca 50%)">
+            <p align="center" class="card-panel hoverable"
+            style="background-image: linear-gradient(326deg, #2E9AFE 0%, #3847ca 50%)">
+              {{item1._body}}</p>
+          </div>
         </div>
       </div>
-    </div>
-  </form>
+
+      <form align="center" class="formGroup" [formGroup]="tweetsform" (ngSubmit)="nlu_text()"
+      style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">
+        <button class="btn waves-effect waves-light" (click)="Process_ba3()"
+          style="background-image: linear-gradient(326deg, #2E9AFE 0%, #2532ac 50%)">Analyze Text
+          <i class="material-icons right">send</i>
+        </button>
+        <div *ngIf="!isCollapsed3" class="progress">
+          <div class="indeterminate"></div>
+        </div>
+
+        <div class="col-xs-12">
+          <div *ngFor="let item1 of respuesta" class="col s12 m7">
+            <div align="center" class="card-Anali"
+            style="background-image: linear-gradient(326deg, #3847ca 0%, #2E9AFE 50%)">
+              <div align="center" class="card-Anali">
+                <div align="center" class="card-panel hoverable" style="background-image: linear-gradient(326deg, #2E9AFE 0%, #3847ca 50%)">
+                  <div *ngFor="let item2 of item1">
+                    <a href="#"> Tipo: {{item2.type|json}}</a>
+                    <a href="#"> Texto: {{item2.text}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </form>
+    <br><br><br>
+  </div>
+
   <br><br><br><br><br><br><br><br><br><br>
 </body>
