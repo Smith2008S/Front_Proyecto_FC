@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<form>
+    <form class="formGroup" [formGroup]="tweetsform" (ngSubmit)="nlu_text()">
+        <div class="contenedor">
+            <img class="bvc" src="assets/logo.png">
+        </div>
+        <br>
+        <div class="contenedor">
+            <div class="form-row align-items-center">
+                <div class="col-auto">
+                    <label class="sr-only" for="inlineFormInputGroup">Text</label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text" style="background-color: rgba(46, 153, 254, 0.24);">
+                                <i class="fa fa-file-text-o" aria-hidden="true" style="font-size:25px;"></i>
+                                
+                                <!-- <div class="input-group-text">#</div> -->
+                            </div>
+                        </div>
+                        <input id="hashtags" type="text" class="form-control" name="formData" formControlName="formData"
+                            autofocus placeholder="Texto">
+
+                    </div>
+                </div>
+
+                <div class="col-auto">
+                    <button mat-icon-button color="primary"
+                        aria-label="Example icon button with a vertical three dot icon" type="submit" name="action"
+                        (click)="Process_ba()">
+                        <i class="fa fa-check" aria-hidden="true" style="font-size: 45px;"></i>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</form>
+
+<div class="contenedor">
+    <div *ngIf="!isCollapsed" class="lds-spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+<body>
+    <div class="card"
+        style="opacity: 0.85; margin-top: 8px; border-radius: 5px; border-left: 50px; border-right: 50px;">
+        <div *ngFor="let item2 of text" class="col s12 m7">
+            <h5 class="card-header">Text</h5>
+            <div class="card-body">
+                <p class="card-text">{{item2}}</p>
+                <div *ngFor="let item1 of respuesta" class="col s12 m7">
+                    <div class="card"
+                        style="opacity: 0.85; margin-top: 8px; border-radius: 5px; border-left: 50px; border-right: 50px;">
+                        <div class="card-body">
+                            <div *ngFor="let item2 of item1">
+                                <h5 class="card-header">Entidades</h5>
+                                <p class="card-text">Tipo: {{item2.type|json}}</p>
+                                <p class="card-text">Texto: {{item2.text}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

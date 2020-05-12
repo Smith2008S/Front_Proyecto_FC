@@ -1,15 +1,34 @@
-.card-image {
-  float: left;
-  width: 40%;
-  height: 250px;
+body{
+    background: -webkit-linear-gradient(left,#4f9ffa , #4d4afa); 
+    background: -o-linear-gradient(right, #4f9ffa, #4d4afa); 
+    background: -moz-linear-gradient(right, #4f9ffa, #4d4afa); 
+    background: linear-gradient(to right, #4f9ffa , #4d4afa); 
 }
-.card-image img {
-  height: 50%;
-}
-.right-content {
-  width: 60%;
-  float: left;
-}
-.card-title {
-  padding-left: 20px;
-}
+.contenedor {
+    display: flex;
+    justify-content: center;
+  }
+
+.bvc{
+    display: flex;
+    justify-content: center;
+    height:60px;
+    width:130px;
+  }
+
+  .encabezado{
+      background-color: #ffffff;
+  }
+  * {
+    margin: 0;
+  }
+  html, body {
+    height: 100%;
+  }
+  .wrapper {
+    min-height: calc(100% - 4rem);
+  }
+  .footer {
+    height: 4rem;
+    background-color: #e2e2e2
+  }
